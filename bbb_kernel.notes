@@ -1,0 +1,29 @@
+This readme files helps about building kernel for beaglebone black:
+
+Downloading the kernel:
+=======================
+	-git clone git://github.com/beagleboard/kernel.git
+	cd kernel
+	gitcheckout <kernel_version>
+	./patch.sh
+
+Building the Kernel:
+====================
+	cp configs/beaglebone kernel/arch/arm/configs/beaglebone_defconfig
+
+	wget http://arago-project.org/git/projects/?p=am33x-cm3.git\;a=blob_plain\;f=bin/am335x-pm-firmware.bin\;hb=HEAD -O kerne
+	l/firmware/am335x-pm-firmware.bin
+
+	cd kernel
+
+	make ARCH=arm CROSS_COMPILE = arm-linux-gnueabihf- beaglebone_defconfig
+
+	make ARCH=arm CROSS_COMPILE = arm-linux-gnueabihf- LOADADDR= 0x80008000 uImage 
+
+	make ARCH=arm CROSS_COMPILE = arm-linux-gnueabihf- uImage.dtb-am335x-boneblack
+
+	make ARCH=arm CROSS_COMPILE = arm-linux-gnueabihf- modules
+
+Installing the Kernel Modules ot the appropriate path:
+=======================================================
+	make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=<path to install > modules-install

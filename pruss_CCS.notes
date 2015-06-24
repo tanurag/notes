@@ -1,0 +1,40 @@
+This file gives information related to building some files in pru.
+
+Introduction:
+============
+ For using pru in BBB. You use one of the following two methods.
+	-Remoteproc
+	-uio_pruss(user io)
+
+ So uio_pruss module uses user space driver to load .bin file to pru units.
+but CCS generates .out file used with JTAG and Debugger. so basically for generating a .bin file from CCS you have to follow following steps:
+
+Do following for generating .bin file using hex utility in 
+Code composer studio
+
+	Properties->PRU Hex Utility 
+		ENABLE PRU HEX UTILITY
+
+	append this:
+		${command} ${flags} ${output_flg} ${output} ${inputs} ${PROJECT_LOC}/bin
+
+Add a bin.cmd file to your project folder:
+
+#.bin file to generate data.bin and text.bin
+-b
+-image
+
+ROMS{
+	PAGE 0:
+	text: o=0x0, l=0x2000, files={text.bin}
+	PAGE 1:
+	data:o =0x0, l=0x2000, files={data.bin}
+}
+
+
+exclude bin.cmd file from build
+and build the project.
+
+Notes:
+  .cmd files are linker cmd line files which will tell the linker to performfollowing commands while generating the object file.
+

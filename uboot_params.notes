@@ -1,0 +1,49 @@
+This file includes the command or params of uEnv.txt for beaglebone black
+while booting. BBB can be booted from many different devices like SPI,I2C,
+and other tftp,memory card,nand flash.
+
+Here we will discuss some basic params to do so 
+
+Booting using tftp:
+==================
+
+Notes: Before doing so you should have a properly configured tftp server 
+and images related to that.
+
+	env set ipaddr <ip_addr>
+	env set serverip <server_ipaddr>
+	tftpboot ${loadaddr} <image name>
+	tftpboot ${fdtaddr}  <dtb file name>
+	setenv bootargs console=${console} ${optargs} root=${mmcroot} rootfstype=${mmcrootfstype} optargs=quiet
+	bootm ${loadaddr} - ${fdtaddr}
+
+
+There is basically before booting if you are booting a zImage you can 
+simply do following changes
+
+uname_r= <kernel version>
+dtb=<overwriting the default dtb file>
+
+
+Booting Using Memory Card:
+=========================
+
+In latest uboot images there is a parameter named uname_boot you have to 
+overwrite that parameter to boot your image.
+
+Basically following commands should be intered:
+
+	mmc rescan
+	load mmc 0:2 ${loadaddr} \boot\<image file name>
+	load mmc 0:2 ${fdtaddr} \boot\<fdt file>
+	setenv bootargs console=${console} ${optargs} root=${mmcroot} rootfstype=${mmcrootfstype} optargs=quiet
+	bootm ${loadaddr} - ${fdtaddr}
+
+Example uEnv.txt file:
+	var_boot=mmc rescan; load mmc 0:2 ${loadaddr} \boot\<image file name>;load mmc 0:2 ${fdtaddr} \boot\<fdt file>;setenv bootargs console=${console} ${optargs} root=${mmcroot} rootfstype=${mmcrootfstype} optargs=quiet;bootm ${loadaddr} - ${fdtaddr}
+
+uname_boot=run var_boot
+
+Note:
+	If you are booting from external memory card no will always be 0.
+
