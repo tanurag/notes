@@ -1,0 +1,56 @@
+Introduction:
+=============
+	This notes will include notes related to the following topics
+	-Setting up git.
+	-Setting up git repo.
+	-Cloning a repository
+	-Git commands
+
+
+
+
+
+#Downloading the git:
+=====================
+   for debian based:
+	sudo apt-get install git
+   for fedora(redhat) based:
+	sudo yum -y install git
+
+#Setting up git 
+================
+	git config --global user.name "User name " 
+	//shown to the word
+	git config --global user.email "Your Email Address"
+
+Authentication:
+===============
+	http Authentication:(use a cache manager to store your password)
+	
+	git config --global credential.helper cache
+
+
+#Creating a new repository in git using command line:
+====================================================	
+	Create a folder suppose notes
+		mkdir notes
+		cd notes
+
+	Adding a little information to the repo.
+		echo "#notes" >> README.md
+
+	Initializing the Repository:
+		git init 
+	
+	Adding the file
+		git add README.md
+
+	Commiting the file:
+		git commit -m "first commit"
+	
+	Adding the repository on remote server
+		git remote add origin https://github.com/tanurag/notes.git
+
+	Pushing the changes to the repository:
+		git push -u origin master
+
