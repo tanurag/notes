@@ -1,0 +1,21 @@
+This notes explains how to establish a password less ssh
+
+
+Add hosts 
+ edit /etc/hosts
+   192.168.7.2		bone
+
+Add user to ~/.ssh/config(This is done is host)
+	Host bone
+		HostName bone
+		User debian
+
+
+Key Generation:
+	ssh-keygen -t rsa
+
+Creating a Directory on other system:
+	ssh b@B mkdir -p .ssh
+
+Append a's public key to B
+	cat .ssh/id_rsa.pub | ssh b@B 'cat>> .ssh/authorized_keys'
