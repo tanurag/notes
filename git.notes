@@ -6,7 +6,13 @@ Introduction:
 	-Cloning a repository
 	-Git commands
 
-
+Workflow:
+=========
+	Developing project revolves around the basic 
+		edit -> stage ->commit Cycle
+	when you are ready to stage change you will add the file to repo.
+	after you are happy with the staging process ypu will commit the
+	file to project history.
 
 
 
@@ -54,3 +60,55 @@ Authentication:
 	Pushing the changes to the repository:
 		git push -u origin master
 
+
+Cloning a Repository:
+=====================
+	git clone <repo addr>
+	git clone <repo addr> <output directory name>
+
+Git Config Cmds:
+================
+
+	Create a alias:
+	git config --global alias.<alias-name> <git cmd>
+	
+	Set a default Browser:
+	git config --sytem core.editor <editor name>
+	
+	Open a git config file for configuration:
+	git config --global --edit
+
+
+Git config files:
+=================
+	<repo>/.git/config - Repository specific Settings
+	~/.gitconfig	   - User specific settings
+	/etc/gitconfig	   - system wide settings.
+
+
+Saving Changes Related Cmds:
+============================
+	Add a change into staging area:
+	git add <filename>
+
+	Stage all changes in the directory
+	git add <directory>
+
+	Let you choose from the part of the file
+	git add -p
+
+	Commiting a change to the repository.
+	git commit -m "Commit info"
+	git commit -a //all files
+
+Inspection related git commands:
+================================
+	
+	Let you see the status of directory and the staging area.
+	git status
+	
+	Displays all the commit information
+	git status
+
+	Inspecting branches
+	git checkout master
