@@ -1,0 +1,53 @@
+SPI Bus:
+=======
+	A serial communication interface specification used for short
+	distance communication primarly in embedded systems.
+
+	Spi devices communicate in full duplex mode using a master slave
+	architecture with single master.
+
+
+	-------------------			--------------------
+	|   SCLK	  |-------------------->| SCLK		   |
+	-------------------			--------------------
+	|   MOSI	  |-------------------->| MOSI             |
+	------------------			--------------------
+	|   MISO	  |-------------------->| MISO             |
+	------------------			--------------------
+	|   SS		  |--------------------->| SS		  |
+	-------------------			-------------------
+	   Master				Slave
+
+
+Clock Polarity and Phases:
+=========================
+ -At CPOL=0 the base value of the clok is zero
+	-CPHA =0 data are captured on rising edge and data is propagated 
+	on falling edge
+	
+	-CPHA =1 Data are captured on falling edge and data is propagated 
+	on rising edge.
+
+ -At CPOL=1 the base value of the clock is 1
+	-CPHA=0	 Data are captured on clocks falling edge and data is 
+	propagated on clock's rising edge
+	-CPHA=1  Data are captured on clocks rising edge and data is 
+	propagated on clocks falling edge.
+
+ BitBanging SPI:
+ ==============
+ Master:(for Mode 0)
+	-Set the slave_select signal active_low.
+	-Generate a clock signal by toggling the clock
+	-Set the MOSI pin on rising edge
+	-Read the MISO pin in falling edge.
+
+ Slave:
+	-Poll or interrupt the ss pin for active low.
+	-Check the clock edge
+		-Falling edge sample mosi pin
+		-Rising edge propagate miso pin.
+
+
+ Slave:
+	-Poll or 
