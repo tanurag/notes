@@ -49,5 +49,3 @@ Clock Polarity and Phases:
 		-Rising edge propagate miso pin.
 
 
- Slave:
-	-Poll or 
