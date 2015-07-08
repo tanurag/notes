@@ -1,0 +1,18 @@
+This notes contains configuration related data for vim
+
+
+In Editor Cmd:
+	:syntax on  Syntax highlighting
+	:syntax off Syntax highlighting off
+	
+
+
+
+Config file CMD:
+	edit .vimrc
+		syntax on	- syntax highlighting
+		set ai		- Autoindentation
+		set wrap	- word wrap on
+		set ts		- tab space 4
+		set history=700	- 700 line history remember
+		

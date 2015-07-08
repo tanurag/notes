@@ -1,5 +1,14 @@
 This file gives information related to building some files in pru.
 
+Installing Pru Compiler if App Center is not working
+===================================================
+	Help-> Install New Software
+		Select->Code Generation Tools update
+			Select -> PRU Compiler
+
+
+
+
 Introduction:
 ============
  For using pru in BBB. You use one of the following two methods.

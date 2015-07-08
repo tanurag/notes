@@ -1,0 +1,16 @@
+#setting svn over proxy
+
+Edit ~/.subversion/server
+	[global]
+	http-proxy-host=<proxy>
+	http-proxy-port=<port>
+
+Cheching out a directory:
+	svn co <repo path>
+seeing the logs
+	svn log
+Adding a file 
+	svn add <filename>
+Commiting:
+	svn commit -m "message"
+
