@@ -1,0 +1,43 @@
+This file explains how to setup a samba server on linux pc.
+Notes:
+	This is a basic setup guide more detailed i will update for the 
+	more detailed version of the samba server.
+
+
+Installing the SAMBA Server:
+----------------------------
+	sudo apt-get update
+	sudo apt-get install samba
+	sudo apt-get install smbclient
+
+Set a password for your user in samba:
+--------------------------------------
+	sudo smbpasswd -a <usr-name>
+		-seprate password for samba authentication.
+		-check for proper access permissions.
+
+Make directory to be shared:
+----------------------------
+	sudo mkdir $PATH/<directory-name>
+
+Edit the file smb.conf
+-----------------------
+	and add follwoing lines in the EOF:
+		[<directory -name>]
+		path = <folder path>
+		valid users = <usr-name>
+		read only = no 
+
+Restart the service:
+-------------------
+	sudo service smbd restart
+
+testing the conf file
+	$>testparm
+To access your network share:
+-----------------------------
+List all shares:
+	smbclient -L //<host ip or name>/<folder-name> -U <usr-name>
+	
+Connect:
+	smbclient //<host ip or name>/<folder-name> -U <usr-name>
