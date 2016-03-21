@@ -7,4 +7,13 @@ Edit ~/.subversion/server
 
 Cheching out a directory:
 	svn co <repo path>
+<<<<<<< HEAD
+=======
+seeing the logs
+	svn log
+Adding a file 
+	svn add <filename>
+Commiting:
+	svn commit -m "message"
+>>>>>>> 7c5023c621a8fdc855319ec1dff38a1ca4acaaf0
 
