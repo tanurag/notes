@@ -1,0 +1,22 @@
+5: General Overview:
+	1. The serial link employed is a high speed differential layer that utilizes Gigabit technology 
+	8b/10b encoding.
+
+ Architecture:
+	1. There are four layers in the Serial ATA architecture:
+		-Application.
+		-Transport.
+		-Link
+		-Physical.
+
+	- application layer - over all ATA command Execution including Controlling command block registers
+	-Tranport Layer - Placing control information and data to be transferred between the host and the
+			device in a packet frame known as a Frame information Structure.
+	- Link Layer - Taking data from constructed frames ,encoding or decoding each byte using 8b/10b.
+	- Physical layer - converts the data in to serial data stream .
+
+	The host may interact with the Application layer through a register interface that is equivalent to
+	that presented by traditional parallel ATA host Adapter.
+
+Usage Model:
+	1. 

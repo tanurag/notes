@@ -1,0 +1,30 @@
+Cables and Connectors:
+======================
+ 
+ Internal cables and connectors.
+  - Directly connected to host or either connected by a cable.
+  - Host signal plug connector 
+  - Beside the signal cable there is also a seprate power cable for the cable connection.
+  Following is the wire stats:
+	GND 1				1 GND		
+	A+  2  Host Tx+	----->		2 A+		Dev Rx+
+	A-  3  Host Tx-			3 A-		Dev Rx-
+	GND 4				4 GND
+	B-  5  Host Rx-			5 B-		Dev Tx- 
+	b+  6  Host Rx+			6 B+		Dev Tx+
+	GND 7				7 GND
+
+
+	Host chip pcb				Device.
+	and connector.
+
+  The connection of the TX differential signal pair on the host side to the RX differential
+  signal pair on the device side.
+
+  Mating Interface:-
+  ----------------
+  Device Plug Connector
+	The device plug includes optional features to allow use of latching cables,fillets,and 
+	additional material to improve connector robustness.
+
+

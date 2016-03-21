@@ -1,0 +1,77 @@
+This is my notes containing the linux ext2 Filesystems
+
+Ext2 Disk Data Structures:
+	1. First block of each ext2 partition is reserved for partition boot sector.
+	2. Rest of the partition is split into block groups.
+	
+	------------------------------------------------------------------
+	| Boot |	Block Group 0	| ----- | Block Group n		 |
+	| Block|			|	|			 |
+	------------------------------------------------------------------
+		   Figure 1. A simple Block Group.
+
+	3. Description of a simple block group
+	+----------------------------------------------------------------+
+	|Super|   Group    | Data Blocks |inode |inode|   Data Blocks	 |
+	|Block| Descriptor |  Bitmap	 |Bitmap|Table|			 |
+	+----------------------------------------------------------------+
+	 1blk     nblk        1 blk        1blk   1blk    nblks
+
+	4. A block group reduces the file fragmentation because the kernel keep the
+	data blocks belonging to a file in the same block group.
+
+	5. Only the super block and the group descriptor included in the block group 
+	0 are usded by the kernel.
+
+	6. Other superblock descriptor and group descriptors are used for the disk 
+	check utility to repair or maintain the consitancy across filesystem.
+
+	7.No of block groups - Depends upon the block size ,partition size and the block bitmap
+
+		No of block groups = s/8xb blocks
+					b -> block size in bytes 
+					Block bitmap is stored in single block
+					s - >partion size.
+		Ex:
+			8 GB ext2 partion with 1kb block size.
+			each block represents 1000*8= 8000blocks = 8MB
+			
+			No of block groups = 8,000/8 =1000 block descriptors.
+	8. From above we can say that size of block is inverse relative  to block descriptor
+
+There are two kinds of data structure
+1. On disk data sturcture - which will be stored on the blk device
+2. In memory data structure - which will be in the linux main memory.
+
+	a) super block on disk data structure:
+		refer <linux_src>/fs/ext2/ext2.h
+		struct ext2_super_block
+	b) Group descriptor for block groups.
+		refer <linux_src>/fs/ext2/ext2.h
+		struct ext2_group_desc
+
+	c)Inode Table:
+		refer <linux_src>/fs/ext2/ext2.h
+		sturucture ext2_inode
+	 inodes are 128 byts in size.
+	 To get the the blocks used by inode - no of inodes in a group/no of inodes in a block.
+		Ex: 100 inode in a group of block size 1024 = 128/1024=8 
+				100/8=12 ~ blocks for 100 inodes 
+	
+How Various types of files use disk block:
+------------------------------------------
+	1. Description 0
+	-----------------
+	    Unknown     1
+	3. Regular files 2
+	4. Directory   3
+	5. Charecter Device 4
+	6. Block Device 5
+	7. Named Pipes 6
+	8. Socket      7
+	
+	Directory:
+		1. structure type ext2_dir_entry_2
+		<linux_src>/fs/ext2/ext2.h
+
+

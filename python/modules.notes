@@ -1,0 +1,14 @@
+Modules:
+
+1. Every file with .py extention in python is a module.
+2. Other files can access these modules by using the import statement.
+3. importing module is a heavy idea so you should avoid the importing
+   modules two time.
+4. reload(module) name reloads a module.module should be imported earlier'
+   to call this function.
+5.  Module is just a package of variable names.
+6.  the dot expression with object.attribute lets you access any attributes
+   associated with the object.
+7.  from copies attributes such that they become simple variable.
+8. execfile(<filename>) this runs the given filename as seprate script.
+9. 

@@ -1,0 +1,53 @@
+Physical Layer:
+=============
+
+Compliance Testing:
+	- Each electrical specification requires a specific measurement ,test setup and data patterns.
+	- The physical layer is divided into a transmitter,interconnect,and a receiver.
+	- The SATA link is a full duplex point to point link as continuous data activity exists on 
+	each direction.
+
+  In testing the compliance of SATA components that make up a system there are five compliance Areas to 
+  measured:
+	- Transmitted Signal.
+	- Transmitter.
+	- Receiver.
+	- Receiver Tolerance.
+	- Interconnect.
+  Link Performance 
+	- The performance of a SATA system with host and Device Linked together with an interconnect 
+	is measured by the Fram error rate,using a set of reference frames,defined by a specific set
+	of ordered test patterns within the frame.
+
+  Validation consist of performing tests on individual SATA components.
+  The transmitter consist of the driver integrated circuit,PCB,and mated connector pair.
+  The receiver consist of the receiver IC,printed circuit board and mated connector pair.
+
+
+  Hotplug Considerations:
+  -----------------------
+	1.Hot plug overview:
+	Hot plug capability is further classified into 
+		a) Surprise hotplug capable.
+		b) OS- Aware Hotplug capable.
+		  Without anything its surprise hotplug capable.
+
+	Hot plug capable devices shall not suffer any electrical damage,or permanent electrical
+	degradation,and shall resume compliant Tx/Rx operations after the applicable OOB operations
+	following the hotplug event.
+
+	- Asynchronous Signal Hot Plug/Removal.
+	- Unpowered OS-Aware hotplug removal.
+	- Powered OS Aware hotplug/Removal.
+	- Surprise hotplug/Removal.
+	
+ Mated Connection Pair Definition:
+ --------------------------------
+	
+ Compliance Interconnect Channels:
+---------------------------------
+
+Jitter:
+--------
+	- Jitter is the short term variations of the zero crossign from ideal positions in time.
+

@@ -1,0 +1,48 @@
+This notes explains some of the under the hood details.
+   Compiled to bytecode -> Routed to virtual machine for execution.
+
+Byte code Compilation:
+----------------------
+	1. Compile the source code.
+	2. Code turns into platform independent python bytecode.
+	(converts source code steps in to byte code instructions.)
+	3. byte code extention is .pyc 
+	4. This speeds up the whole process next time when you run your
+	program it will directly run the bytecode.
+	
+Python Virtual Machine:
+-----------------------
+	1. Bytecode is sent to Python virtual Machine (PVM) to be executed.
+	2. Runtime engine of python executes the bytecode.
+	3. eval() and exec() builtin function can execute another python
+	  script .
+	4. Python do not have phases its byte code compiler and PVM all
+	are in single runtime .
+
+	
+
+   ---------------            -------------         ------------------
+   | .py file    |  ----->   | .pyc file  | ----->  |PVM execution   |
+   --------------	     -------------          ------------------
+
+
+- There are three primary implementation of python language.
+	1. Cpython.
+	2. Jython.
+	3. Iron Python.
+-Execution Optimization tools:
+-----------------------------
+	- Psycho just in time compiler.
+		- It generates machine code tailered to the data types 
+		that program actually uses.
+	- Shedskin C++ translator.
+	-Frozen Binaries: A binary of python code.
+		-py2exe
+		-freeze
+
+Some python ide:
+----------------
+	- Pydev and eclipse.
+	- Komodo
+	- Python Win
+

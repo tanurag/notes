@@ -1,0 +1,76 @@
+Arm Introduction:
+----------------
+ The arm is RISC ,as it incorporates these typical RISC architecture features.
+	- A large uniform register file.
+	- A load/store architecture where data processing operations only operate on register
+	contents not directly on memory
+	-Simple addressing mode with all load/store addresses being determined from register 
+	contents and instruction field only.
+	-Uniform and fixed length instruction field,to simplify instruction decode.
+
+  In addtion following things are also provided:
+	- Control over both teh ALU and shifter in most data -processing instructions
+	to maximize the use of an ALU and shifter.
+	-Auto increment and auto decriment addressing mode to optimize program loops.
+	-Load store multiple instruction to maximize data throughput.
+	-Conditonal execution of almost all instruction to maximize execution throughput
+
+ARM Register:
+-------------
+  Arm has 32 general purpose 32 bit registers.At any one time,16 of these registers are 
+  visible.
+  -These are the 16 visible registers have special roles:
+	stack pointer -> R13 as stack pointer.
+	Link Register -> R14 Link Register. This register holds the address of the next
+			 instruction after a branch and link instruction.which is instruction
+			 use to make a subroutine call.
+	Program Counter->R15 is the program counter .It can be used in most instructions as
+			a pointer to the instruction which is two instructions after the 
+			instruction being executed.
+
+  -Remaining 13 registers have no special hardware purpose. 
+
+Exceptions:
+-----------
+	ARM supports seven type of exception and a privileged processing mode for each type.
+	-Reset
+	-Attempted execution of an Undefined instruction.
+	-Software Interrupt Instruction can be used to make a call to an operating system
+	-Prefetch Abort, An instruction fetch memory abort.
+	-Data Abort. - Data access memory abort.
+	-IRQ - Normal Interrupt.
+	-FIQ - Fast Interrupt.
+  When an exception occurs some of standard registers are replaced with registers specific to the exception mode. All mode have replacement banked registers for R13 and R14 the fast interrupt mode has addtional fast registers for fast interrupt processing.
+    When an exception handler is entered,R14 holds the return address for exception processing.
+
+
+The Exception Process:
+----------------------
+	When an exception occurs,the ARM processor halts execution in defined manner and 
+	begins execution at one of a no of fixed addresses in memory,known as the exception
+	vectors.
+	
+Status Registers:
+-----------------
+	The current operating processor status is in the Current Program Status Register(CPSR)
+	CPSR holds:
+		---------------------------------------------------------------------
+		|Field		Description		Architecture		    |
+		---------------------------------------------------------------------
+		N Z C W	    Condition Code Flags.	All
+		J	    Jazzle State Flag		5TEJ and above
+		GE[3:0]	    SIMD condition flag.	6
+		E	    Endian Load/Store		6
+		A	    Impressive Abort Mode	6
+		I	    IRQ interrupt Mask		All
+		F	    FIQ Interrutp Mask		All
+		T	    Thumb State Flag		4T and above.
+		Mode[4:0]   Processor Mode		All
+		----------------------------------------------------------------------
+
+ARM Instruction Set:
+--------------------
+Thumb Instruction Set
+---------------------
+
+

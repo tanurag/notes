@@ -1,0 +1,54 @@
+Mastering the DMA and IOMMU:
+============================
+	DMA(DMA mapping) != DMA(DMA engine) (maxi mahipal)
+-Memory Access (that will be accessed by multiple agents (ex:devices))
+	ex:CPU write to memory(using memory controller)
+	       Device Read from the memory.
+
+	---------------------
+	|	CPU	|wb | <--L1 Cache -> Memory Controller 
+	---------------------
+
+Memory Mapping:
+---------------
+	-Giving the view and access of memory to the device is 
+	called memory mapping.
+	-Fully Cohrent memory mapping:(cache cohrent hardware
+		or disable the cache) 
+		Visible by all the agents.
+	-Writes Combined Mapping:
+		Writes can be buffered 
+	-Wekly Cohrent:
+		Weakly ordering mapping. (synch flags and barries)
+	-Completly uncohrent mapping.
+		No synchronization gurantee.
+	
+Files:
+======
+	#include<asm/cacheflush.h>
+	#include<asm/outercache.h>
+		Dont  use  these headers in driver.
+DMA Mapping API:	
+	Used in driver :
+		#include<linux/dma-mapping.h>
+		#include<linux/dma-attr.h>	Attributes
+		#include<linux/dma-direction.h>
+		#include<linux/scatterlist.h>
+	
+		#include<asm-generic/dma-mapping-broken.h>
+	arch/arm/include/asm/dma-mapping.h
+			asm-generic
+				
+
+
+DMA cohrent Mapping:
+	dma_allocate_cohrent()		//pretty expensive.
+	dma_free_cohrent()		
+	
+	dma_alloc_attrs()
+	dma_free_alloc()
+	
+		
+
+	
+	

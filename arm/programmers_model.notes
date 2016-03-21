@@ -1,0 +1,41 @@
+1. Data Types:
+	- Byte		8bit
+	- Halfword	16bits
+	- Word		32bits
+
+2. Processor Modes:
+	------------------------------------------------------------------------------
+	Processor mode		ModeNo.		Description
+	-------------------------------------------------------------------------------
+	User	   usr		0b10000		Normal Program execution mode.
+	FIQ (e)	   fiq		0b10001		Supports high speed data transfer
+						or channel process.
+	IRQ (e)	   irq		0b10010		Used for general purpose interrupt
+	Supervisor svc(e)	0b10011		A protected mode for OS.
+	Abort(e)   abt		0b10111		Implements VM or VM protection
+	Undefined(e)und		0b11011		SUpports s/w emulation of hw coprocessor.
+	System	   sys		0b11111		Runs priviledged operating system tasks.
+	---------------------------------------------------------------------------------
+
+	- The modes other than User mode are known as priviledged mode. They have full
+	access to system resources and can change  mode freely.
+
+	Notes:(e) denotes execption mode which get called when some error condition arises.
+
+3. Registers:
+	The arm processor has total 37 registers.
+	- 31 general purpose register.
+	- 6 Status Register.
+
+	Registers are arranged in partially overlapping banks,with current processor mode.
+
+	General Purpose Registers.
+	 - Unbanked register R0-R7 - Single set of register for whole processor.
+	 - Banked Register R8 -R 14 - Depends on processor mode.
+
+	- Register R8- R12 have two banked set one is for FIQ and other is for all other
+	mode.
+
+	- Register R13- R14 have six banked register each, One is used in Usr/Supervisor.
+	- Register Reprsentation R13_<mode>
+

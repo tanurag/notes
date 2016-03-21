@@ -1,0 +1,66 @@
+Stack Pointer:
+---------------
+	-R13 is used as stack pointer 
+	-In architecture versions earlier than ARMv6, each banked version of R13 will normally	      be initialized to point to a stack dedicated to that exception mode. On entry, the 
+	exception handler typically stores the values of other registers that it wants to use 
+	on this stack. By reloading thesei values into the
+	register when it returns, the exception handler can ensure that it does not corrupt the state of the
+	program that was being executed when the exception occurred.
+	If fewer exception-handling stacks are desired in a system than this implies, it is possible instead to
+	initialize the banked version of R13 for an exception mode to point to a small area of memory that is
+	used for temporary storage while transferring to another exception mode and its stack. For example,
+	suppose that there is a requirement for an IRQ handler to use the Supervisor mode stack to store
+	SPSR_irq, R0 to R3, R12, R14_irq, and then to execute in Supervisor mode with IRQs enabled. This
+	can be achieved by initializing R13_irq to point to a four-word temporary storage area, and using the
+	following code sequence on entry to the handler:
+	STMIA
+	MRS
+	MOV
+	MOV
+	MOV
+	MRS
+	BIC
+	ORR
+	MSR
+	STMFD
+	STR
+	LDMIA
+	BIC
+	MSR
+	STMIB
+	•
+	R13, (R0-R3)
+	R0, SPSR
+	R1, R12
+	R2, R13
+	R3, R14
+	R12, CPSR
+	R12, R12, #0x1F
+	R12, R12, #0x13
+	CPSR_c, R12
+	R13!, (R1,R3)
+	R0, [R13,#-20]!
+	R2, {R0-R3}
+	R12, R12, #0x80
+	CPSR_c, R12
+	R13, {R0-R3}
+	; Put R0-R3 into temporary storage
+	; Move banked SPSR and R12-R14 into
+	; unbanked registers
+	; Use read/modify/write sequence
+	; on CPSR to switch to Supervisor
+	; mode
+	;
+	;
+	;
+	;
+	;
+	;
+	;
+	Push original {R12, R14_irq}, then
+	SPSR_irq with a gap for R0-R3
+	Reload R0-R3 from temporary storage
+	Modify and write CPSR again to
+	re-enable IRQs
+	Store R0-R3 in the gap left on the
+	stack for them
