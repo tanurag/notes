@@ -1,0 +1,166 @@
+%-------------------------
+% Resume in Latex
+% Author : Anurag Tripathi
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\Large Anurag Tripathi} & Email : \href{mailto:tanurag640@gmail.com}{tanurag640@gmail.com}\\
+   & Mobile : +91-9538346822 \\
+\end{tabular*}
+
+\vspace*{10px}
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+   \resumeSubheading
+      {CDAC}{Bengalure,KA}
+      {PG Diploma in System Software Design }{Aug. 2008 -- July. 2012}
+    \resumeSubheading
+      {UPTU}{Lucknow,UP}
+      {B.Tech In Information Technology}{Jul 2009 -- June 2013}
+  \resumeSubHeadingListEnd
+
+\vspace*{10px}
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+\vspace*{5px} 
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Western Digital}{Bengaluru}
+      {Senior Engineer,Firmware Engineering}{March 2016 - Present}
+      \resumeItemListStart
+        \resumeItem{Oakgate NVME FrameWork}
+          {API's and framework written in C/C++ on top of Oakgate API's to write test cases for NVME Protocol Compliance Testing.}
+        \resumeItem{Auto Test Executer}
+          {A GUI Written in C++ to execute protocol compliance testing with automatic report generation , different timing reports , eg:command execution times,test report generation, automatic scheduling of of tests on multiple platforms.}
+        \resumeItem{Switcher}
+        {A python library and Tkinter GUI  to switch between multiple devices connected to the Switcher Hardware }
+        \resumeItem{Lecroy PCIe Compliance}
+        {PCIe Phy Layer/Link Layer/Transport Layer Error Injection Scripts to test NVME Compliance.}
+      \resumeItemListEnd
+      \vspace*{5px} 
+    \resumeSubheading
+      {Tech Mahindra}{Bengaluru}
+      {Engineer}{Jun 2014 - Mar 2016}
+      \resumeItemListStart
+        \resumeItem{On Tap Updation}
+          {Client NetApp: NetApp's storage fillers ontap software updation}
+        \resumeItem{Portable Traffic Lights}
+          {Developed Pseudo SPI Framework on top of PRU unit to communicate between different modules.}
+        \resumeItem{NVME Test Framework}
+          {Test Framework for doing NVME Compliance Testing. Added python layer on top of C/C++ API's using boost python.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+  \vspace*{10px} 
+%-----------SKILLS-----------------%/
+\section{Skills}
+\vspace*{5px} 
+      \resumeSubHeadingListStart
+        \resumeSubItem{Languages}{: C,C++,Python}
+        \resumeSubItem{Technologies}{: Linux Device Drivers,Linux System Software,Windows System Software}
+        \resumeSubItem{Tools}{: gdb,eclipse,git,svn,visual Studio,Vim}
+        \resumeSubItem{Protocols}{: NVME,SATA,SPI,CAN,UART,USB}
+        \resumeSubItem{Platforms}{: Beaglebone,STM32,Arduino}
+      \resumeSubHeadingListEnd
+\vspace*{10px} 
+%-----------PROJECTS-----------------
+\section{Projects}
+\vspace*{5px} 
+  \resumeSubHeadingListStart
+    \resumeSubItem{ATA Passthrogh}
+      {Layer written in python to send SATA Command to connected device using Windows IOCTL }
+    \resumeSubItem{Embedded Firewall}
+      {Embedded Firewall using beaglebone and linux netfilter framework.}
+    \resumeSubItem{USB Driver}
+      {Linux USB Data Collection device driver.}
+    \resumeSubItem{UART Linux Driver}
+      {Custom Linux device driver for UART}
+    \resumeSubItem{OpenStack Setup}
+      {POC on Openstack Cloud Setup , Chef Setup}
+  \resumeSubHeadingListEnd
+
+%
+%--------PROGRAMMING SKILLS------------
+%\section{Programming Skills}
+%  \resumeSubHeadingListStart
+%    \item{
+%      \textbf{Languages}{: Scala, Python, Javascript, C++, SQL, Java}
+%      \hfill
+%      \textbf{Technologies}{: AWS, Play, React, Kafka, GCE}
+%    }
+%  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
